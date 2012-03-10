@@ -9,7 +9,7 @@ module Rails
 
     def initialize(options = {}, app = Rails.application, &block)
       config = app.config
-      root   = config.paths['public'].first
+      root   = config.paths.to_hash['public'].first
       block  = cache_block(Pathname.new(root)) unless block_given?
 
       opts = {
